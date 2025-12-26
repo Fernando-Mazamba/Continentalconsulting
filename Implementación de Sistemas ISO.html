@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Implementación de Sistemas ISO - Continental Consulting</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d7a;
+            --primary-light: #0066cc;
+            --secondary: #ffc107;
+            --secondary-dark: #e0a800;
+            --accent: #2e8b57;
+            --dark: #1a365d;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --whatsapp: #25D366;
+            --linkedin: #0077b5;
+            --instagram: #e4405f;
+            --facebook: #1877f2;
+            --youtube: #ff0000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Ajustes para toque em dispositivos móveis */
+        button, a {
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+            tap-highlight-color: rgba(0,0,0,0.1);
+        }
+        
+        input, textarea, button, select {
+            font-size: 16px; /* Previne zoom em iOS */
+        }
+        
+        /* Header Moderno - Mobile First */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background-color: rgba(26, 54, 93, 0.95);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s;
+            max-width: 100%;
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-text {
+            color: white;
+            min-width: 0;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            letter-spacing: -0.5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .logo-text p {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            font-weight: 300;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        /* Menu Hamburguer para Mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+        
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        /* Navegación Moderna - Mobile First */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            background-color: var(--secondary);
+            color: var(--dark) !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 30px;
+            font-weight: 600 !important;
+            margin-left: 0.5rem;
+        }
+        
+        .nav-cta:hover {
+            background-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-cta::after {
+            display: none;
+        }
+        
+        /* Hero Moderno - Mobile First */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.8)), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll; /* Alterado para melhor performance mobile */
+            color: white;
+            padding: 10rem 1rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255, 193, 7, 0.2) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Botões Modernos - Mobile First */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            min-height: 50px;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+        }
+        
+        .btn-primary:hover, .btn-primary:active {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 86, 179, 0.4);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary) 0%, #ffd54f 100%);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+        
+        .btn-secondary:hover, .btn-secondary:active {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--whatsapp) 0%, #5cf07c 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover, .btn-whatsapp:active {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Secciones - Mobile First */
+        .section {
+            padding: 4rem 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+        
+        /* Contenido de Descripción - Mobile First */
+        .description-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .description-text h3 {
+            font-size: 1.7rem;
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+        }
+        
+        .description-text p {
+            margin-bottom: 1.2rem;
+            color: var(--gray);
+            line-height: 1.8;
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+        
+        .description-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .description-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Sistemas Grid - Mobile First */
+        .systems-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .system-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        
+        .system-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .system-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .system-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .system-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .system-content {
+            padding: 1.5rem;
+        }
+        
+        .system-icon {
+            height: 60px;
+            width: 60px;
+            background: linear-gradient(135deg, var(--secondary) 0%, #ffd54f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            color: var(--dark);
+            font-size: 1.5rem;
+        }
+        
+        .system-content > p {
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        
+        .system-content ul {
+            list-style: none;
+            margin: 1.2rem 0;
+        }
+        
+        .system-content li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .system-content li:last-child {
+            border-bottom: none;
+        }
+        
+        .system-content li i {
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+        
+        /* Documentación - Mobile First */
+        .doc-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .doc-step {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .doc-step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .doc-step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--secondary) 0%, #ffd54f 100%);
+            color: var(--dark);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+        }
+        
+        .doc-step i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+        }
+        
+        .doc-step h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+        }
+        
+        .doc-step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Sección CTA - Mobile First */
+        .contact-cta {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.9)), 
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        
+        .contact-cta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .contact-cta p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+        
+        /* Contacto Moderno - Mobile First */
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+        }
+        
+        .contact-section .section-header h2,
+        .contact-section .section-header p {
+            color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-item h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            color: white;
+        }
+        
+        .contact-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-icon:hover, .social-icon:active {
+            transform: translateY(-3px);
+        }
+        
+        .facebook-bg { background-color: var(--facebook); }
+        .instagram-bg { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .linkedin-bg { background-color: var(--linkedin); }
+        .youtube-bg { background-color: var(--youtube); }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.8rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        select.form-control {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+            padding-right: 2.5rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Footer Moderno - Mobile First */
+        footer {
+            background-color: #0d1b2a;
+            color: white;
+            padding: 3rem 1rem 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column p {
+            font-size: 0.9rem;
+            color: #b0b7c3;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+        
+        .footer-links a {
+            color: #b0b7c3;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0b7c3;
+            font-size: 0.85rem;
+        }
+        
+        .copyright p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--whatsapp) 0%, #5cf07c 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover, .whatsapp-float:active {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        .whatsapp-float img {
+            width: 30px;
+            height: 30px;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Responsividade - Tablets */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 12rem 1rem 8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 5rem 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.3rem;
+            }
+            
+            .description-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+            
+            .systems-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .doc-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .nav-links {
+                gap: 2rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+            
+            .contact-cta h2 {
+                font-size: 2.3rem;
+            }
+        }
+        
+        /* Responsividade - Desktop */
+        @media (min-width: 992px) {
+            .menu-toggle {
+                display: none;
+            }
+            
+            .hero {
+                padding: 14rem 1rem 10rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .systems-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .doc-steps {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .logo-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-cta h2 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        /* Responsividade - Telas pequenas */
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 0.8rem 4%;
+            }
+            
+            .hero {
+                padding: 9rem 1rem 5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+                min-height: 45px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                width: 55px;
+                height: 55px;
+            }
+            
+            .whatsapp-float img {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.1rem;
+            }
+            
+            .logo-text p {
+                font-size: 0.7rem;
+            }
+            
+            .contact-cta h2 {
+                font-size: 1.6rem;
+            }
+            
+            .contact-cta p {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Menu Mobile */
+        @media (max-width: 991px) {
+            .menu-toggle {
+                display: flex;
+                order: 2;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(26, 54, 93, 0.98);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 6rem;
+                padding-left: 2rem;
+                gap: 1.5rem;
+                transition: right 0.4s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 0.8rem 0;
+            }
+            
+            .nav-cta {
+                margin: 1rem 0 0 0;
+                width: 80%;
+                text-align: center;
+            }
+            
+            .logo-container {
+                order: 1;
+            }
+            
+            .menu-toggle {
+                order: 3;
+            }
+            
+            /* Overlay quando menu está aberto */
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 998;
+                display: none;
+            }
+            
+            .nav-overlay.active {
+                display: block;
+            }
+        }
+        
+        /* Ajustes para landscape em dispositivos móveis */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                padding: 8rem 1rem 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1rem;
+                min-height: 40px;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div class="logo-container">
+                <img src="loogo/lgo.png" alt="Continental Consulting" class="logo-img">
+                <div class="logo-text">
+                    <h1>Continental Consulting</h1>
+                    <p>Implementación de Sistemas ISO</p>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav>
+                <div class="nav-overlay" id="navOverlay"></div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#nosotros" class="nav-link">Nosotros</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="index.html#porque-elegirnos" class="nav-link">Ventajas</a></li>
+                    <li><a href="#contacto" class="nav-cta nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content animate__animated animate__fadeIn">
+            <h1>Implementación de Sistemas ISO</h1>
+            <p>Desarrollo de sistemas de gestión personalizados, documentación técnica, procedimientos operativos y planes de mejora continua adaptados a su organización y sector.</p>
+            <div class="btn-group">
+                <a href="#sistemas" class="btn btn-primary">
+                    <i class="fas fa-cogs"></i> Ver Sistemas
+                </a>
+                <a href="https://wa.me/595981123207?text=Hola%20Continental%20Consulting%2C%20quiero%20información%20sobre%20implementación%20de%20sistemas%20ISO" class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Consulta Inmediata
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Descripción -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sistemas de Gestión Personalizados</h2>
+                <p>Cada organización es única. Desarrollamos sistemas de gestión que se adaptan perfectamente a su realidad operacional y sectorial.</p>
+            </div>
+            
+            <div class="description-content">
+                <div class="description-text">
+                    <h3>Soluciones a Medida para su Empresa</h3>
+                    <p>Nuestro enfoque de implementación de sistemas ISO no sigue un modelo estándar. Analizamos profundamente sus operaciones, cultura organizacional y objetivos estratégicos para desarrollar un sistema de gestión que realmente funcione para usted.</p>
+                    <p>Combinamos expertise técnica con conocimiento sectorial para crear procedimientos, documentación y flujos de trabajo que se integran perfectamente a sus operaciones existentes, minimizando interrupciones y maximizando eficiencia.</p>
+                    <p>Nuestro foco está en la creación de valor real: sistemas que no solo cumplen con los requisitos de certificación, sino que realmente mejoran su gestión, reducen costos y aumentan la satisfacción de los clientes.</p>
+                    <div class="btn-group" style="justify-content: flex-start; margin-top: 2rem;">
+                        <a href="#documentacion" class="btn btn-primary">
+                            <i class="fas fa-file-alt"></i> Ver Documentación
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="description-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Implementación de Sistemas ISO">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Sistemas -->
+    <section class="section" id="sistemas" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sistemas que Implementamos</h2>
+                <p>Especializados en diversas normas ISO para atender las necesidades específicas de su sector.</p>
+            </div>
+            
+            <div class="systems-grid">
+                <div class="system-card">
+                    <div class="system-header">
+                        <h3>Sistemas Integrados</h3>
+                        <p>ISO 9001 + 14001 + 45001</p>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <p>Implementación integrada de Calidad, Medio Ambiente y Seguridad Laboral para máxima eficiencia.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Política integrada única</li>
+                            <li><i class="fas fa-check-circle"></i> Documentación unificada</li>
+                            <li><i class="fas fa-check-circle"></i> Auditorías combinadas</li>
+                            <li><i class="fas fa-check-circle"></i> Reducción de costos operativos</li>
+                            <li><i class="fas fa-check-circle"></i> Mejora continua integrada</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-secondary" style="width: 100%; margin-top: 1.5rem;">
+                            Solicitar Información
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">
+                        <h3>Sector Específico</h3>
+                        <p>Normas Especializadas</p>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <p>Sistemas adaptados para sectores específicos con requisitos regulatorios particulares.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> ISO 13485 (Dispositivos Médicos)</li>
+                            <li><i class="fas fa-check-circle"></i> ISO 22000 (Inocuidad Alimentaria)</li>
+                            <li><i class="fas fa-check-circle"></i> ISO 17025 (Laboratorios)</li>
+                            <li><i class="fas fa-check-circle"></i> ISO 27001 (Seguridad de la Información)</li>
+                            <li><i class="fas fa-check-circle"></i> ISO 50001 (Gestión Energética)</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-secondary" style="width: 100%; margin-top: 1.5rem;">
+                            Solicitar Información
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="system-card">
+                    <div class="system-header">
+                        <h3>Gestión Especializada</h3>
+                        <p>Sistemas de Soporte</p>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <p>Implementación de sistemas de gestión complementarios para excelencia organizacional.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> ISO 22301 (Continuidad del Negocio)</li>
+                            <li><i class="fas fa-check-circle"></i> ISO 37001 (Antisoborno)</li>
+                            <li><i class="fas fa-check-circle"></i> ISO 31000 (Gestión de Riesgos)</li>
+                            <li><i class="fas fa-check-circle"></i> ISO 45001 (Seguridad y Salud)</li>
+                            <li><i class="fas fa-check-circle"></i> Personalización total</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-secondary" style="width: 100%; margin-top: 1.5rem;">
+                            Solicitar Información
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Documentación -->
+    <section class="section" id="documentacion">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestro Enfoque de Documentación</h2>
+                <p>Desarrollamos documentación técnica que no solo cumple con los requisitos de la norma, sino que es práctica, útil y fácil de mantener.</p>
+            </div>
+            
+            <div class="doc-steps">
+                <div class="doc-step">
+                    <div class="doc-step-number">1</div>
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Manual del Sistema</h3>
+                    <p>Documento central que describe el alcance, política y estructura del sistema de gestión, adaptado a su organización.</p>
+                </div>
+                
+                <div class="doc-step">
+                    <div class="doc-step-number">2</div>
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Procedimientos</h3>
+                    <p>Instrucciones detalladas para procesos críticos, claras y de fácil comprensión para todo el personal.</p>
+                </div>
+                
+                <div class="doc-step">
+                    <div class="doc-step-number">3</div>
+                    <i class="fas fa-edit"></i>
+                    <h3>Registros</h3>
+                    <p>Formularios y registros que demuestran la eficacia del sistema y el cumplimiento normativo.</p>
+                </div>
+                
+                <div class="doc-step">
+                    <div class="doc-step-number">4</div>
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Mejora Continua</h3>
+                    <p>Plan de acción e indicadores para monitoreo y mejora constante del sistema implementado.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://wa.me/595981123207?text=Hola%20Continental%20Consulting%2C%20necesito%20implementación%20de%20sistema%20ISO%20personalizado" class="btn btn-whatsapp" target="_blank" style="font-size: 1rem; padding: 1rem 1.5rem;">
+                    <i class="fab fa-whatsapp"></i> Solicitar Implementación Personalizada
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <h2>¿Necesita un sistema de gestión personalizado?</h2>
+            <p>Contáctenos para discutir sus necesidades específicas. Desarrollaremos una propuesta a medida para su organización con acompañamiento completo durante todo el proceso.</p>
+            <div class="btn-group">
+                <a href="#contacto" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Solicitar Propuesta
+                </a>
+                <a href="https://wa.me/595981123207?text=Hola%20Continental%20Consulting%2C%20quiero%20una%20propuesta%20para%20implementación%20de%20sistema%20ISO" class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Directo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section class="section contact-section" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contacto</h2>
+                <p>Conéctate con nuestro equipo para una implementación personalizada</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email Corporativo</h4>
+                                <p>info@continentalconsulting.org</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4>WhatsApp Business</h4>
+                                <p>+595 981 123207</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>+595 981 123207</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 2rem;">Síguenos en Redes</h3>
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/profile.php?id=61583233783707" target="_blank" class="social-icon facebook-bg">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/continentalconsultingiso/" target="_blank" class="social-icon instagram-bg">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/continental-consulting/" target="_blank" class="social-icon linkedin-bg">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCh7qrSqlH8nCSC11sXFXoDA" target="_blank" class="social-icon youtube-bg">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="whatsappForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="empresa" name="empresa" placeholder="Empresa / Organización">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="sistema" name="sistema">
+                                <option value="">Seleccione sistema ISO</option>
+                                <option value="Sistema Integrado">Sistema Integrado (9001+14001+45001)</option>
+                                <option value="ISO 13485">ISO 13485 (Dispositivos Médicos)</option>
+                                <option value="ISO 22000">ISO 22000 (Inocuidad Alimentaria)</option>
+                                <option value="ISO 27001">ISO 27001 (Seguridad Informática)</option>
+                                <option value="ISO 50001">ISO 50001 (Gestión Energética)</option>
+                                <option value="Otro">Otro sistema ISO</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" placeholder="Describa sus necesidades específicas (opcional)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Solicitar Implementación
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Continental Consulting</h3>
+                <p>Líderes en implementación de sistemas ISO personalizados. Transformamos organizaciones mediante estándares internacionales de excelencia adaptados a su realidad.</p>
+                <div class="social-media" style="margin-top: 1.2rem;">
+                    <a href="https://www.facebook.com/profile.php?id=61583233783707" target="_blank" class="social-icon facebook-bg">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/continentalconsultingiso/" target="_blank" class="social-icon instagram-bg">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/continental-consulting/" target="_blank" class="social-icon linkedin-bg">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCh7qrSqlH8nCSC11sXFXoDA" target="_blank" class="social-icon youtube-bg">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sistemas ISO</h3>
+                <ul class="footer-links">
+                    <li><a href="#sistemas"><i class="fas fa-chevron-right"></i> Sistemas Integrados</a></li>
+                    <li><a href="#sistemas"><i class="fas fa-chevron-right"></i> Sector Específico</a></li>
+                    <li><a href="#sistemas"><i class="fas fa-chevron-right"></i> Gestión Especializada</a></li>
+                    <li><a href="#documentacion"><i class="fas fa-chevron-right"></i> Documentación Técnica</a></li>
+                    <li><a href="index.html#servicios"><i class="fas fa-chevron-right"></i> Consultoría Integral</a></li>
+                    <li><a href="index.html#servicios"><i class="fas fa-chevron-right"></i> Capacitación Acreditada</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                    <li><a href="index.html#nosotros"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                    <li><a href="index.html#servicios"><i class="fas fa-chevron-right"></i> Servicios</a></li>
+                    <li><a href="index.html#porque-elegirnos"><i class="fas fa-chevron-right"></i> Ventajas</a></li>
+                    <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    <li><a href="https://wa.me/595981123207" target="_blank"><i class="fas fa-chevron-right"></i> WhatsApp Directo</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:info@continentalconsulting.org"><i class="fas fa-envelope"></i> info@continentalconsulting.org</a></li>
+                    <li><a href="https://wa.me/595981123207" target="_blank"><i class="fab fa-whatsapp"></i> +595 981 123207</a></li>
+                    <li><a href="tel:+595981123207"><i class="fas fa-phone"></i> +595 981 123207</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 Continental Consulting. Todos los derechos reservados. | Implementación de Sistemas ISO</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">Implementamos: 9001 • 14001 • 45001 • 22000 • 27001 • 50001 • 22301 • 37001 • 13485 • 17025 • 31000</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/595981123207?text=Hola%20Continental%20Consulting%2C%20quiero%20información%20sobre%20implementación%20de%20sistemas%20ISO" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    </a>
+
+    <script>
+        // Menu Mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        const navLinkItems = document.querySelectorAll('.nav-link');
+        
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        menuToggle.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+        
+        // Fechar menu ao clicar em um link
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+        
+        // Formulario WhatsApp
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const empresa = document.getElementById('empresa').value;
+            const sistema = document.getElementById('sistema').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            // Crear mensaje para WhatsApp
+            let textoWhatsApp = `*SOLICITUD IMPLEMENTACIÓN SISTEMA ISO*%0A%0A`;
+            textoWhatsApp += `*Nombre:* ${nombre}%0A`;
+            textoWhatsApp += `*Email:* ${email}%0A`;
+            
+            if (empresa) textoWhatsApp += `*Empresa:* ${empresa}%0A`;
+            if (sistema) textoWhatsApp += `*Sistema ISO de interés:* ${sistema}%0A`;
+            if (mensaje) textoWhatsApp += `*Necesidades específicas:* ${mensaje}%0A`;
+            
+            textoWhatsApp += `%0A*Enviado desde la página de Implementación de Sistemas ISO*`;
+            
+            // Redirigir a WhatsApp
+            window.open(`https://wa.me/595981123207?text=${textoWhatsApp}`, '_blank');
+        });
+
+        // Scroll suave para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                e.preventDefault();
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Efecto de aparición al hacer scroll
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animación
+        document.querySelectorAll('.system-card, .doc-step').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Prevenir zoom em formulários no iOS
+        document.addEventListener('touchstart', function() {}, {passive: true});
+    </script>
+</body>
+</html>
