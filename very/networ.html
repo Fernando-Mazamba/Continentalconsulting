@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Continental Consulting | Red Premium de Consultores ISO</title>
+    <meta name="description" content="Únase a la comunidad exclusiva de consultores ISO. Acceso a proyectos internacionales, capacitación premium y networking global.">
+    <meta name="keywords" content="consultor ISO, certificación ISO, normas ISO, BPM, HACCP, consultoría internacional">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'TU_PIXEL_ID_AQUI');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=TU_PIXEL_ID_AQUI&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <!-- End Google Analytics -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-dark: #002244;
+            --secondary: #0066CC;
+            --accent: #FF6600;
+            --accent-light: #FF9900;
+            --light: #F8FAFC;
+            --gray-light: #E5E7EB;
+            --gray: #6B7280;
+            --dark: #111827;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 700;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.95) 0%, rgba(0, 34, 68, 0.95) 100%), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .counter {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .benefit-card {
+            background: white;
+            border-top: 3px solid transparent;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            border-top-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            position: relative;
+            height: 100%;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            font-size: 50px;
+            color: var(--secondary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -10px); }
+            100% { transform: translate(0, 0px); }
+        }
+        
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .logo-container {
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            max-width: 180px;
+        }
+        
+        .form-input {
+            min-height: 44px; /* Tamanho mínimo para toque */
+        }
+        
+        .tap-target {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Estilos responsivos específicos */
+        @media (min-width: 640px) {
+            .counter {
+                font-size: 3rem;
+            }
+            .logo-container {
+                height: 55px;
+            }
+            .logo-img {
+                height: 45px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .counter {
+                font-size: 3.5rem;
+            }
+            .logo-container {
+                height: 60px;
+            }
+            .logo-img {
+                height: 50px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-bg {
+                background-attachment: fixed;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .testimonial-card:before {
+                top: -10px;
+                left: 10px;
+                font-size: 40px;
+            }
+            
+            .form-input {
+                font-size: 16px; /* Previne zoom em iOS */
+            }
+            
+            input[type="tel"],
+            input[type="text"],
+            input[type="email"],
+            textarea,
+            select {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 767px) and (min-width: 641px) {
+            /* Tablet vertical */
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        @media (min-width: 768px) and (max-width: 1023px) {
+            /* Tablet horizontal */
+            .benefit-card,
+            .testimonial-card {
+                min-height: 280px;
+            }
+        }
+        
+        /* Previne seleção de texto em botões para melhor experiência tátil */
+        button, a.btn-whatsapp {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        
+        /* Melhoria para telas retina */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hero-bg {
+                background-image: linear-gradient(135deg, rgba(0, 51, 102, 0.95) 0%, rgba(0, 34, 68, 0.95) 100%), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            }
+        }
+        
+        /* Suporte para modo escuro */
+        @media (prefers-color-scheme: dark) {
+            .benefit-card,
+            .testimonial-card {
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <!-- WhatsApp Floating Button - Otimizado para todos dispositivos -->
+    <div class="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 tap-target">
+        <a href="https://wa.me/595981123207?text=Hola,%20quiero%20ser%20parte%20de%20la%20comunidad%20de%20consultores%20Continental%20y%20acceder%20a%20proyectos%20internacionales" 
+           target="_blank" 
+           class="btn-whatsapp text-white p-3 md:p-4 rounded-full shadow-lg flex items-center justify-center tap-target"
+           style="width: 56px; height: 56px;">
+            <i class="fab fa-whatsapp text-xl md:text-2xl"></i>
+        </a>
+        <div class="absolute -top-1 -right-1 md:-top-2 md:-right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 md:w-6 md:h-6 flex items-center justify-center animate-pulse">
+            <i class="fas fa-bolt text-xs"></i>
+        </div>
+    </div>
+
+    <!-- Header Responsivo -->
+    <header class="sticky top-0 z-40 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-2 md:py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="logo-container mr-2 md:mr-3">
+                    <img src="logo/logo.png" alt="Continental Consulting Logo" class="logo-img">
+                </div>
+                <div class="hidden md:block">
+                    <p class="text-xs text-gray-600 font-medium">Red Global de Consultores ISO</p>
+                </div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex space-x-4 lg:space-x-6">
+                <a href="#beneficios" class="text-gray-700 font-medium hover:text-blue-700 transition duration-300 text-sm lg:text-base">Beneficios</a>
+                <a href="#estadisticas" class="text-gray-700 font-medium hover:text-blue-700 transition duration-300 text-sm lg:text-base">Resultados</a>
+                <a href="#testimonios" class="text-gray-700 font-medium hover:text-blue-700 transition duration-300 text-sm lg:text-base">Testimonios</a>
+                <a href="#registro" class="bg-gradient-to-r from-blue-700 to-blue-900 text-white font-bold py-2 px-4 lg:px-5 rounded-lg hover:opacity-90 transition duration-300 text-sm lg:text-base">
+                    Aplicar Ahora
+                </a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-blue-900 tap-target" aria-label="Abrir menú">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 z-50 bg-white p-4 md:hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center">
+                    <div class="logo-container mr-3">
+                        <img src="logo/logo.png" alt="Continental Consulting Logo" class="logo-img">
+                    </div>
+                </div>
+                <button id="close-mobile-menu" class="text-gray-700 tap-target" aria-label="Cerrar menú">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <nav class="flex flex-col space-y-4">
+                <a href="#beneficios" class="text-gray-700 font-medium text-lg py-3 border-b border-gray-100 tap-target">Beneficios</a>
+                <a href="#estadisticas" class="text-gray-700 font-medium text-lg py-3 border-b border-gray-100 tap-target">Resultados</a>
+                <a href="#testimonios" class="text-gray-700 font-medium text-lg py-3 border-b border-gray-100 tap-target">Testimonios</a>
+                <a href="#registro" class="bg-gradient-to-r from-blue-700 to-blue-900 text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition duration-300 text-center mt-4 tap-target">
+                    Aplicar Ahora
+                </a>
+            </nav>
+            
+            <div class="absolute bottom-4 left-4 right-4">
+                <a href="https://wa.me/595981123207?text=Hola,%20quiero%20ser%20parte%20de%20la%20comunidad%20de%20consultores%20Continental" 
+                   target="_blank"
+                   class="btn-whatsapp text-white font-bold py-3 px-4 rounded-lg text-center flex items-center justify-center tap-target">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section - Totalmente Responsiva -->
+    <section class="hero-bg text-white py-12 md:py-20 lg:py-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <div class="inline-flex items-center bg-white bg-opacity-20 text-white text-xs md:text-sm font-medium px-3 md:px-4 py-1 md:py-2 rounded-full mb-4 md:mb-6">
+                        <i class="fas fa-star mr-2 text-yellow-300"></i>
+                        <span>Comunidad Exclusiva de Consultores ISO</span>
+                    </div>
+                    <h1 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 leading-tight">Transforme su Carrera como Consultor ISO</h1>
+                    <p class="text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-blue-100">Acceda a proyectos internacionales, aumente sus ingresos hasta 300% y construya autoridad global como consultor certificado.</p>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 md:space-x-4 mb-6 md:mb-8">
+                        <a href="#registro" class="bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold py-3 px-5 md:py-3 md:px-6 rounded-lg text-center hover:opacity-90 transition duration-300 text-sm md:text-base tap-target">
+                            <i class="fas fa-user-plus mr-2"></i>Aplicar para Vacante
+                        </a>
+                        <a href="https://wa.me/595981123207?text=Hola,%20quiero%20información%20sobre%20cómo%20ser%20consultor%20Continental" 
+                           target="_blank"
+                           class="bg-transparent border-2 border-white text-white font-bold py-3 px-5 md:py-3 md:px-6 rounded-lg text-center hover:bg-white hover:bg-opacity-10 transition duration-300 text-sm md:text-base tap-target">
+                            <i class="fab fa-whatsapp mr-2"></i>Consultar por WhatsApp
+                        </a>
+                    </div>
+                    
+                    <div class="flex items-center text-xs md:text-sm text-blue-200">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        <span>Proceso selectivo riguroso | Solo 15 vacantes por cohorte</span>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-sm md:max-w-md lg:max-w-lg">
+                        <div class="bg-white p-1 md:p-2 rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl floating">
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Consultores ISO en reunión internacional" 
+                                 class="rounded-lg md:rounded-xl w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section - Responsiva -->
+    <section id="estadisticas" class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 md:mb-4">Resultados Comprobados de Nuestra Comunidad</h2>
+                <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">Los consultores Continental experimentan un crecimiento exponencial en sus carreras</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+                <div class="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-md">
+                    <div class="counter mb-1 md:mb-2" id="counter1">0</div>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Facturación adicional generada para consultores en 2024</p>
+                    <div class="mt-3 md:mt-4 text-blue-600">
+                        <i class="fas fa-dollar-sign text-lg md:text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-md">
+                    <div class="counter mb-1 md:mb-2" id="counter2">0</div>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Proyectos internacionales conducidos por nuestros aliados</p>
+                    <div class="mt-3 md:mt-4 text-green-600">
+                        <i class="fas fa-briefcase text-lg md:text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-md">
+                    <div class="counter mb-1 md:mb-2" id="counter3">0</div>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Consultores ISO activos en nuestra red premium</p>
+                    <div class="mt-3 md:mt-4 text-orange-600">
+                        <i class="fas fa-user-tie text-lg md:text-xl"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-md">
+                    <div class="counter mb-1 md:mb-2" id="counter4">0</div>
+                    <p class="text-gray-600 font-medium text-sm md:text-base">Países con empresas aliadas de Continental</p>
+                    <div class="mt-3 md:mt-4 text-purple-600">
+                        <i class="fas fa-globe-americas text-lg md:text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 md:mt-12 text-center">
+                <a href="https://wa.me/595981123207?text=Hola,%20quiero%20ser%20parte%20de%20estas%20estadísticas%20de%20éxito%20como%20consultor%20Continental" 
+                   target="_blank"
+                   class="inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg hover:opacity-90 transition duration-300 text-sm md:text-base tap-target">
+                    <i class="fab fa-whatsapp mr-2"></i> ¿Quiere ser parte de estas estadísticas?
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section - Responsiva -->
+    <section id="beneficios" class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 md:mb-4">Beneficios Exclusivos para Consultores Aliados</h2>
+                <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">Más que una red, una comunidad de crecimiento y éxito comprobado</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <div class="benefit-card p-4 md:p-6 rounded-lg md:rounded-xl">
+                    <div class="bg-blue-100 text-blue-700 w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center mb-3 md:mb-4">
+                        <i class="fas fa-handshake text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base md:text-lg font-bold mb-2 md:mb-3 text-gray-900">Proyectos Garantizados</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Pipeline constante de proyectos internacionales con clientes calificados.</p>
+                </div>
+                
+                <div class="benefit-card p-4 md:p-6 rounded-lg md:rounded-xl">
+                    <div class="bg-green-100 text-green-700 w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center mb-3 md:mb-4">
+                        <i class="fas fa-graduation-cap text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base md:text-lg font-bold mb-2 md:mb-3 text-gray-900">Capacitación Continua</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Actualización constante en nuevas normas ISO, BPM y HACCP.</p>
+                </div>
+                
+                <div class="benefit-card p-4 md:p-6 rounded-lg md:rounded-xl">
+                    <div class="bg-purple-100 text-purple-700 w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center mb-3 md:mb-4">
+                        <i class="fas fa-tools text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base md:text-lg font-bold mb-2 md:mb-3 text-gray-900">Herramientas Digitales</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Plataforma exclusiva con plantillas, software y herramientas de diagnóstico.</p>
+                </div>
+                
+                <div class="benefit-card p-4 md:p-6 rounded-lg md:rounded-xl">
+                    <div class="bg-orange-100 text-orange-700 w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center mb-3 md:mb-4">
+                        <i class="fas fa-network-wired text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base md:text-lg font-bold mb-2 md:mb-3 text-gray-900">Networking Global</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Conexiones con líderes de certificadoras y empresas multinacionales.</p>
+                </div>
+                
+                <div class="benefit-card p-4 md:p-6 rounded-lg md:rounded-xl">
+                    <div class="bg-red-100 text-red-700 w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center mb-3 md:mb-4">
+                        <i class="fas fa-medal text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base md:text-lg font-bold mb-2 md:mb-3 text-gray-900">Certificación Continental</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Sello de calidad que aumenta su credibilidad y tasa de conversión.</p>
+                </div>
+                
+                <div class="benefit-card p-4 md:p-6 rounded-lg md:rounded-xl">
+                    <div class="bg-indigo-100 text-indigo-700 w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center mb-3 md:mb-4">
+                        <i class="fas fa-coins text-xl md:text-2xl"></i>
+                    </div>
+                    <h3 class="text-base md:text-lg font-bold mb-2 md:mb-3 text-gray-900">Modelo Remunerativo</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Comisiones competitivas y participación en ingresos recurrentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - Responsiva -->
+    <section id="testimonios" class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 md:mb-4">Testimonios de Nuestros Consultores</h2>
+                <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">Lo que dicen los consultores que ya forman parte de nuestra comunidad</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+                <div class="testimonial-card p-4 md:p-6 lg:p-8 rounded-lg md:rounded-xl shadow-md">
+                    <div class="flex items-center mb-4 md:mb-6">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Carlos Mendes" class="w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Carlos Mendes</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Consultor ISO 9001/14001 | 8 años de experiencia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 md:mb-6 text-sm md:text-base">"En 18 meses como consultor aliado, tripliqué mi facturación. Continental no solo trajo proyectos internacionales, sino que me dio las herramientas y credibilidad para cobrar lo que realmente valgo."</p>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-4 md:p-6 lg:p-8 rounded-lg md:rounded-xl shadow-md">
+                    <div class="flex items-center mb-4 md:mb-6">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Ana Silva" class="w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Ana Silva</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Especialista ISO 27001 | 6 años de experiencia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 md:mb-6 text-sm md:text-base">"El networking estratégico fue transformador. Me conecté con certificadoras europeas y hoy tengo proyectos en 3 países. La capacitación continua mantiene mi consultoría a la vanguardia de las normas."</p>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-4 md:p-6 lg:p-8 rounded-lg md:rounded-xl shadow-md">
+                    <div class="flex items-center mb-4 md:mb-6">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Roberto Almeida" class="w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm md:text-base">Roberto Almeida</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Consultor ISO 45001/22000 | 12 años de experiencia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4 md:mb-6 text-sm md:text-base">"Después de años trabajando solo, encontré en Continental un ecosistema de crecimiento. La estructura de soporte, plantillas y metodologías ahorraron meses de desarrollo propio."</p>
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                        <i class="fas fa-star text-sm md:text-base"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 md:mt-12 text-center">
+                <a href="https://wa.me/595981123207?text=Hola,%20quiero%20conocer%20más%20testimonios%20de%20consultores%20Continental%20antes%20de%20aplicar" 
+                   target="_blank"
+                   class="inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg hover:opacity-90 transition duration-300 text-sm md:text-base tap-target">
+                    <i class="fab fa-whatsapp mr-2"></i> ¿Tiene preguntas sobre los testimonios?
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form - Totalmente Responsivo -->
+    <section id="registro" class="py-12 md:py-16 bg-gradient-to-br from-blue-900 to-blue-800">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8 md:mb-10 text-white">
+                    <h2 class="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">Aplicación para Consultor Aliado Continental</h2>
+                    <p class="text-base md:text-lg text-blue-100">Complete el formulario para iniciar su proceso de selección</p>
+                </div>
+                
+                <div class="bg-white rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl overflow-hidden">
+                    <div class="p-4 md:p-6 lg:p-8">
+                        <div class="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
+                            <div class="mb-3 md:mb-0">
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900">Proceso Selectivo Riguroso</h3>
+                                <p class="text-gray-600 text-xs md:text-sm">Solo 1 de cada 8 aplicaciones es aprobada</p>
+                            </div>
+                            <a href="https://wa.me/595981123207?text=Tengo%20dudas%20sobre%20el%20formulario%20de%20aplicación%20para%20consultor%20Continental" 
+                               target="_blank"
+                               class="btn-whatsapp text-white font-bold py-2 px-3 md:py-2 md:px-4 rounded-lg text-xs md:text-sm flex items-center tap-target">
+                                <i class="fab fa-whatsapp mr-1 md:mr-2"></i> Dudas por WhatsApp
+                            </a>
+                        </div>
+                        
+                        <form id="registration-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                                <!-- Datos Personales -->
+                                <div class="md:col-span-2">
+                                    <h4 class="text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-4 border-b pb-2">Información Personal</h4>
+                                </div>
+                                
+                                <div class="md:col-span-2">
+                                    <label for="nombre" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Nombre Completo *</label>
+                                    <input type="text" id="nombre" name="nombre" required class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 form-input text-sm md:text-base">
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Email Profesional *</label>
+                                    <input type="email" id="email" name="email" required class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 form-input text-sm md:text-base">
+                                </div>
+                                
+                                <div>
+                                    <label for="telefono" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Número de Teléfono *</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                            <i class="fas fa-phone text-gray-400 text-sm md:text-base"></i>
+                                        </div>
+                                        <input type="tel" id="telefono" name="telefono" required 
+                                               class="w-full pl-10 md:pl-10 px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 form-input text-sm md:text-base"
+                                               placeholder="Ej: +595981123207">
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">Por favor incluya código de país (+595, +54, etc.)</p>
+                                </div>
+                                
+                                <div>
+                                    <label for="pais_residencia" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">País de Residencia *</label>
+                                    <input type="text" id="pais_residencia" name="pais_residencia" required 
+                                           class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 form-input text-sm md:text-base"
+                                           placeholder="Ej: Paraguay, Argentina, etc.">
+                                </div>
+                                
+                                <!-- Experiencia -->
+                                <div class="md:col-span-2">
+                                    <h4 class="text-base md:text-lg font-bold text-gray-900 mb-3 md:mb-4 border-b pb-2">Experiencia y Especialización</h4>
+                                </div>
+                                
+                                <div>
+                                    <label for="experiencia" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">Años de Experiencia *</label>
+                                    <select id="experiencia" name="experiencia" required class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 form-input text-sm md:text-base">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <option value="1-3">1-3 años</option>
+                                        <option value="4-6">4-6 años</option>
+                                        <option value="7-10">7-10 años</option>
+                                        <option value="10+">Más de 10 años</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="md:col-span-2">
+                                    <label class="block text-gray-700 font-medium mb-2 text-sm md:text-base">Normas de Especialización *</label>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 9001" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 9001</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 14001" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 14001</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 45001" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 45001</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 27001" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 27001</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 22000" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 22000</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="BPM" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">BPM</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="HACCP" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">HACCP</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 50001" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 50001</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 13485" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 13485</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 37001" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 37001</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" name="normas[]" value="ISO 22301" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">ISO 22301</span>
+                                        </label>
+                                        <label class="flex items-center text-sm md:text-base">
+                                            <input type="checkbox" id="otras_normas" name="normas[]" value="Otras" class="form-checkbox text-blue-600 h-4 w-4 md:h-5 md:w-5">
+                                            <span class="ml-2">Otras normas</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <!-- Campo para especificar otras normas -->
+                                    <div id="otras_normas_input" class="mt-2 md:mt-3 hidden">
+                                        <label for="especificar_normas" class="block text-gray-700 font-medium mb-1 text-sm md:text-base">Especifique otras normas:</label>
+                                        <input type="text" id="especificar_normas" name="especificar_normas" 
+                                               class="w-full px-3 md:px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
+                                               placeholder="Ej: ISO 20000, ISO 31000, etc.">
+                                    </div>
+                                </div>
+                                
+                                <!-- Motivación -->
+                                <div class="md:col-span-2">
+                                    <label for="motivacion" class="block text-gray-700 font-medium mb-1 md:mb-2 text-sm md:text-base">¿Por qué quiere ser Consultor Continental? *</label>
+                                    <textarea id="motivacion" name="motivacion" rows="3" required 
+                                              class="w-full px-3 md:px-4 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 form-input text-sm md:text-base"
+                                              placeholder="Explique brevemente sus motivaciones y expectativas..."></textarea>
+                                </div>
+                                
+                                <!-- Términos -->
+                                <div class="md:col-span-2">
+                                    <label class="flex items-start text-xs md:text-sm">
+                                        <input type="checkbox" name="terminos" required class="form-checkbox text-blue-600 mt-1 h-4 w-4 md:h-5 md:w-5">
+                                        <span class="ml-2 text-gray-600">Acepto recibir comunicaciones y confirmo que la información es veraz *</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 md:mt-8">
+                                <button type="submit" class="w-full bg-gradient-to-r from-blue-700 to-blue-900 text-white font-bold py-3 md:py-4 px-4 md:px-8 rounded-lg hover:opacity-90 transition duration-300 text-sm md:text-base tap-target">
+                                    <i class="fas fa-paper-plane mr-2"></i>Enviar Aplicación
+                                </button>
+                                <p class="text-gray-500 text-xs md:text-sm mt-3 md:mt-4 text-center">
+                                    * Campos obligatorios. Nos contactaremos en 24-48 horas.
+                                </p>
+                            </div>
+                        </form>
+                        
+                        <!-- Mensajes de respuesta -->
+                        <div id="success-message" class="hidden mt-4 md:mt-6 p-3 md:p-4 bg-green-100 text-green-700 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-lg md:text-xl mr-2 md:mr-3"></i>
+                                <div>
+                                    <p class="font-bold text-sm md:text-base">¡Aplicación enviada con éxito!</p>
+                                    <p class="text-xs md:text-sm mt-1">Su solicitud ha sido registrada correctamente. Nos pondremos en contacto en 24-48 horas hábiles.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="error-message" class="hidden mt-4 md:mt-6 p-3 md:p-4 bg-red-100 text-red-700 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-exclamation-circle text-lg md:text-xl mr-2 md:mr-3"></i>
+                                <div>
+                                    <p class="font-bold text-sm md:text-base">Error al enviar la aplicación</p>
+                                    <p class="text-xs md:text-sm mt-1" id="error-text">Por favor, intente nuevamente más tarde o contáctenos por WhatsApp.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- WhatsApp Alternative -->
+                        <div class="mt-6 md:mt-8 p-3 md:p-4 bg-green-50 border border-green-200 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fab fa-whatsapp text-green-500 text-lg md:text-xl mr-2 md:mr-3"></i>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm md:text-base">¿Prefiere aplicar por WhatsApp?</p>
+                                    <p class="text-xs md:text-sm text-gray-600">Envíe "QUIERO SER CONSULTOR CONTINENTAL" al 
+                                        <a href="https://wa.me/595981123207?text=QUIERO%20SER%20CONSULTOR%20CONTINENTAL" 
+                                           target="_blank" 
+                                           class="text-green-600 font-bold">+595 981 123207</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Responsivo -->
+    <footer class="bg-gray-900 text-white py-8 md:py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center mb-3 md:mb-4">
+                        <div class="logo-container mr-3">
+                            <img src="logo/logo.png" alt="Continental Consulting Logo" class="logo-img">
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-xs md:text-sm text-center md:text-left">Conectando consultores de élite con oportunidades globales</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <div class="mb-3 md:mb-4">
+                        <a href="https://wa.me/595981123207?text=Hola,%20quiero%20ser%20parte%20de%20la%20comunidad%20de%20consultores%20Continental" 
+                           target="_blank"
+                           class="inline-flex items-center bg-green-600 text-white font-bold py-2 px-3 md:py-2 md:px-4 rounded-lg hover:bg-green-700 transition duration-300 text-sm md:text-base tap-target">
+                            <i class="fab fa-whatsapp mr-2"></i> WhatsApp +595 981 123207
+                        </a>
+                    </div>
+                    <p class="mb-2 text-sm md:text-base">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <a href="mailto:info@continentalconsulting.org" class="text-gray-300 hover:text-white">info@continentalconsulting.org</a>
+                    </p>
+                    <p class="text-gray-400 text-xs md:text-sm">
+                        Contacto directo para consultores ISO
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-gray-400">
+                <p class="text-sm md:text-base">© 2025 Continental Consulting. Comunidad exclusiva de consultores ISO.</p>
+                <p class="text-xs md:text-sm mt-2">Contacto directo por WhatsApp: 
+                    <a href="https://wa.me/595981123207?text=Hola,%20quiero%20información%20sobre%20la%20comunidad%20de%20consultores%20Continental" 
+                       target="_blank" 
+                       class="text-green-400 font-bold">+595 981 123207</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.add('open'));
+        }
+        if (closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        }
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    mobileMenu.classList.remove('open');
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Animated Counters
+        function animateCounter(elementId, finalValue, duration = 2000) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            let start = 0;
+            const increment = finalValue / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= finalValue) {
+                    element.textContent = finalValue.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // Start counters when section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        animateCounter('counter1', 2800000);
+                        animateCounter('counter2', 187);
+                        animateCounter('counter3', 156);
+                        animateCounter('counter4', 28);
+                    }, 300);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        const statsSection = document.getElementById('estadisticas');
+        if (statsSection) observer.observe(statsSection);
+        
+        // Toggle "Otras normas" input field
+        const otrasNormasCheckbox = document.getElementById('otras_normas');
+        const otrasNormasInput = document.getElementById('otras_normas_input');
+        
+        if (otrasNormasCheckbox && otrasNormasInput) {
+            otrasNormasCheckbox.addEventListener('change', function() {
+                otrasNormasInput.classList.toggle('hidden', !this.checked);
+            });
+        }
+        
+        // Google Apps Script Integration
+        const registrationForm = document.getElementById('registration-form');
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzWhshYyCCrQYKr6PcN3HnSl2kWtNefeyQD1QjEeKIgQh-zJDamVrBON9BTEZRhtkv0/exec';
+        
+        if (registrationForm) {
+            registrationForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Mostrar estado de carga
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
+                submitButton.disabled = true;
+                
+                // Ocultar mensajes anteriores
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+                
+                try {
+                    // Crear FormData con todos los campos
+                    const formData = new FormData(this);
+                    
+                    // DEBUG: Verificar todos los campos del FormData
+                    console.log('=== DEBUG: Campos del FormData ===');
+                    for (let [key, value] of formData.entries()) {
+                        console.log(`${key}: ${value}`);
+                    }
+                    
+                    // Procesar checkboxes de normas para enviar como string separado por comas
+                    const normasCheckboxes = this.querySelectorAll('input[name="normas[]"]:checked');
+                    const normasValues = Array.from(normasCheckboxes).map(cb => cb.value);
+                    
+                    // Si se seleccionó "Otras" y hay texto especificado, agregarlo
+                    if (normasValues.includes('Otras')) {
+                        const otrasNormasText = document.getElementById('especificar_normas');
+                        if (otrasNormasText && otrasNormasText.value.trim()) {
+                            // Reemplazar "Otras" por el texto especificado
+                            const index = normasValues.indexOf('Otras');
+                            normasValues[index] = `Otras: ${otrasNormasText.value.trim()}`;
+                        }
+                    }
+                    
+                    // Agregar normas como string separado por comas
+                    formData.set('normas', normasValues.join(', '));
+                    
+                    // DEBUG: Mostrar datos que se enviarán
+                    console.log('País de residencia:', formData.get('pais_residencia'));
+                    console.log('Normas seleccionadas:', normasValues.join(', '));
+                    
+                    // Enviar a Google Apps Script
+                    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (response.ok) {
+                        // Éxito
+                        successMessage.classList.remove('hidden');
+                        errorMessage.classList.add('hidden');
+                        
+                        // Limpiar formulario
+                        this.reset();
+                        
+                        // Ocultar campo "Otras normas" si estaba visible
+                        if (otrasNormasInput) {
+                            otrasNormasInput.classList.add('hidden');
+                        }
+                        
+                        // Track conversion events
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'Lead');
+                        }
+                        
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'conversion', {
+                                'send_to': 'GA_MEASUREMENT_ID/lead_form_submission',
+                                'value': 1.0,
+                                'currency': 'USD'
+                            });
+                        }
+                        
+                        // DataLayer push for Google Tag Manager
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            'event': 'form_submission',
+                            'form_type': 'consultor_application',
+                            'status': 'success'
+                        });
+                        
+                        // Desplazar a mensaje de éxito
+                        setTimeout(() => {
+                            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
+                        
+                    } else {
+                        // Error del servidor
+                        const errorData = await response.text();
+                        console.error('Error del servidor:', errorData);
+                        throw new Error(`Error del servidor: ${response.status} ${response.statusText}`);
+                    }
+                    
+                } catch (error) {
+                    // Error en la solicitud
+                    console.error('Error al enviar formulario:', error);
+                    errorText.textContent = error.message || 'Por favor, intente nuevamente más tarde o contáctenos por WhatsApp.';
+                    errorMessage.classList.remove('hidden');
+                    successMessage.classList.add('hidden');
+                    
+                    // Track error event
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        'event': 'form_submission',
+                        'form_type': 'consultor_application',
+                        'status': 'error',
+                        'error': error.message
+                    });
+                    
+                } finally {
+                    // Restaurar botón
+                    submitButton.innerHTML = originalButtonText;
+                    submitButton.disabled = false;
+                }
+            });
+        }
+        
+        // WhatsApp CTA Tracking
+        document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
+            link.addEventListener('click', function() {
+                // Meta Pixel - Track WhatsApp Click
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Contact', {
+                        method: 'whatsapp'
+                    });
+                }
+                
+                // Google Analytics - Track WhatsApp Event
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'whatsapp_click', {
+                        'event_category': 'CTA',
+                        'event_label': this.textContent.trim()
+                    });
+                }
+                
+                // DataLayer push for Google Tag Manager
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'whatsapp_click',
+                    'cta_text': this.textContent.trim()
+                });
+            });
+        });
+        
+        // View Content Tracking for Meta
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent');
+            }
+        });
+        
+        // Prevenir zoom en inputs en iOS
+        document.addEventListener('touchstart', function() {}, {passive: true});
+    </script>
+</body>
+</html>
